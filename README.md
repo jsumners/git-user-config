@@ -1,35 +1,43 @@
-Do you use different user names and/or email for your github projects, work projects, private personal projects?
+Do you use different user names and/or email for your github projects, work
+projects, private personal projects?
 
 Then you use ``git config`` a lot.
 
-With ``git-user-config`` you can save these different users globally and configure a new repo with a single command using the user record id.
+With ``git-user-config`` you can save these different users globally and
+configure a new repo with a single command using record identifiers.
 No more misspelled email addresses and user names...
 
 # Install
 
-    npm install -g git-user-config
+`npm install -g git-user-config`
 
 # Add User record for later use
 
-    git-user-config --add
+`git-user-config --add`
 
-The follow instructions
+Then follow instructions
 
-````
+```sh
 Add new user record
 
-id: user1
-name: user 1
-email: user_1@domain.com
+Identifier: personal
+
+Enter property names like `user.email`
+Property name (none to end): user.name
+Value: Joe Schmo
+Property name (none to end): user.email
+Value: joe@example.com
+Property name (none to end):
 
 record saved
-````
+```
 
 # Configure git repo to use user record
 
-    git-user-config --set user1
+`git-user-config --set user1`
 
-This will call ``git config`` to set user.name and user.email
+This will call `git config --local` for each property of the `user1`
+configuration.
 
 ````
 $ git config -l | grep user
@@ -44,16 +52,16 @@ user.email=user_1@domain.com
 ````
 {
   "user1": {
-    "name": "user 1",
-    "email": "user_1@domain.com"
+    "user.name": "user 1",
+    "user.email": "user_1@domain.com"
   },
   "user2": {
-    "name": "user 2",
-    "email": "user_2@domain.com"
+    "user.name": "user 2",
+    "user.email": "user_2@domain.com"
   }
 }
 ````
 
 # Remove a user record
 
-    git-user-config --remove user1
+`git-user-config --remove user1`
