@@ -8,6 +8,7 @@ module.exports = {
   get: get,
   save,
   add,
+  update,
   remove
 }
 
@@ -28,6 +29,10 @@ function save () {
 
 function add (id, record) {
   if (config[id]) throw new Error(`Record "${id}" already exists.`)
+  update(id, record)
+}
+
+function update (id, record) {
   const _record = Object.assign({}, record)
   if (_record.id) delete _record.id
   config[id] = _record

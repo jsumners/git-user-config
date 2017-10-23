@@ -8,6 +8,7 @@ function commandLineOptions () {
   const config = {
     list: argv.l || argv.list,
     add: argv.a || argv.add,
+    update: argv.u || argv.update,
     remove: argv.r || argv.remove,
     set: argv.s || argv.set
   }
@@ -19,6 +20,7 @@ function commandLineOptions () {
 
 function requireOptionSanity (config) {
   requireExactlyOneCommandSet(config)
+  requireIdForOption(config, 'update')
   requireIdForOption(config, 'remove')
   requireIdForOption(config, 'set')
 }
@@ -28,6 +30,7 @@ function requireExactlyOneCommandSet (config) {
   const commands = [
     'list',
     'add',
+    'update',
     'remove',
     'set'
   ]

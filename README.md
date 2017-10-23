@@ -62,6 +62,15 @@ user.email=user_1@domain.com
 }
 ````
 
+# Update a user record
+
+`git-user-config --update user1`
+
+This will interactively allow updating of the `user1` record. The process
+works the same as `--add user1`. Any existing properties specified will be
+overwritten, or removed if the new value is `~del~`, and new properties will
+be merged in.
+
 # Remove a user record
 
 `git-user-config --remove user1`
