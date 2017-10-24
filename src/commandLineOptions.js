@@ -11,7 +11,7 @@ function commandLineOptions () {
     update: argv.u || argv.update,
     remove: argv.r || argv.remove,
     set: argv.s || argv.set,
-    global: argv.s || argv.global
+    global: argv.g || argv.global
   }
 
   requireOptionSanity(config)
