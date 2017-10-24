@@ -10,7 +10,8 @@ function commandLineOptions () {
     add: argv.a || argv.add,
     update: argv.u || argv.update,
     remove: argv.r || argv.remove,
-    set: argv.s || argv.set
+    set: argv.s || argv.set,
+    global: argv.s || argv.global
   }
 
   requireOptionSanity(config)

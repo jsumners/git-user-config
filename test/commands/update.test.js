@@ -1,6 +1,7 @@
 'use strict'
 
 const test = require('tap').test
+const clear = require('clear-require')
 const mockquire = require('mock-require')
 const updateModulePath = require.resolve('../../src/commands/update')
 
@@ -28,7 +29,7 @@ test('updates properties to config object', (t) => {
     }
   }
 
-  delete require.cache[updateModulePath]
+  clear(updateModulePath)
   let counter = 0
   mockquire('read', (config, cb) => {
     counter += 1

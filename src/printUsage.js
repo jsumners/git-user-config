@@ -11,6 +11,7 @@ commands:
   -a --add          add a new user record for later use
   -u --update=<id>  update an existing record
   -r --remove=<id>  remove a user record from storage
-  -s --set=<id>     configure current git repo with the given user record`
+  -s --set=<id>     configure current git repo with the given user record
+  -g --global       set in global config instead of local (only effective with -s)`
     )
 }

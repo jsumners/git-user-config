@@ -3,12 +3,13 @@
 const path = require('path')
 const test = require('tap').test
 const configModulePath = require.resolve('../src/config')
+const clear = require('clear-require')
 const mockquire = require('mock-require')
 
 test('loads config', (t) => {
   t.plan(2)
 
-  delete require.cache[configModulePath]
+  clear(configModulePath)
   mockquire('../src/configPath', () => path.join(__dirname, 'fixtures', 'sample-config.json'))
 
   const config = require(configModulePath)
@@ -21,7 +22,7 @@ test('loads config', (t) => {
 test('adds new record', (t) => {
   t.plan(4)
 
-  delete require.cache[configModulePath]
+  clear(configModulePath)
   mockquire('../src/configPath', () => '')
   mockquire('../src/loadConfig', () => { return {} })
 
@@ -39,7 +40,7 @@ test('adds new record', (t) => {
 test('add rejects existing id', (t) => {
   t.plan(1)
 
-  delete require.cache[configModulePath]
+  clear(configModulePath)
   mockquire('../src/configPath', () => '')
   mockquire('../src/loadConfig', () => { return {foo: {bar: 'bar'}} })
 
@@ -52,7 +53,7 @@ test('add rejects existing id', (t) => {
 test('removes records', (t) => {
   t.plan(2)
 
-  delete require.cache[configModulePath]
+  clear(configModulePath)
   mockquire('../src/configPath', () => '')
   mockquire('../src/loadConfig', () => { return {foo: {bar: 'bar'}} })
 
@@ -68,7 +69,7 @@ test('removes records', (t) => {
 test('rejects removing unknown records', (t) => {
   t.plan(1)
 
-  delete require.cache[configModulePath]
+  clear(configModulePath)
   mockquire('../src/configPath', () => '')
   mockquire('../src/loadConfig', () => { return {} })
 
@@ -81,7 +82,7 @@ test('rejects removing unknown records', (t) => {
 test('save serializes to JSON', (t) => {
   t.plan(1)
 
-  delete require.cache[configModulePath]
+  clear(configModulePath)
   mockquire('../src/configPath', () => '')
   mockquire('../src/loadConfig', () => { return {} })
   mockquire('fs', {writeFile: (dest, data, cb) => {
