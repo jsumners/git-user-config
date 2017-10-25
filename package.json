@@ -14,6 +14,8 @@
   "author": "palortoff",
   "license": "MIT",
   "dependencies": {
+    "consoleplusplus": "^1.4.1",
+    "json-colorizer": "^1.1.0",
     "minimist": "^1.2.0",
     "read": "^1.0.7"
   },

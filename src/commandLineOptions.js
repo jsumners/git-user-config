@@ -3,20 +3,30 @@
 module.exports = commandLineOptions
 
 function commandLineOptions () {
-  const argv = require('minimist')(process.argv.slice(2))
+  const argv = require('minimist')(process.argv.slice(2), {
+    alias: {
+      list: ['l'],
+      add: ['a'],
+      update: ['u'],
+      remove: ['r'],
+      set: ['s'],
+      global: ['g'],
+      debug: ['d']
+    },
+    default: {
+      list: false,
+      add: false,
+      update: undefined,
+      remote: undefined,
+      set: undefined,
+      global: false,
+      debug: false
+    }
+  })
 
-  const config = {
-    list: argv.l || argv.list,
-    add: argv.a || argv.add,
-    update: argv.u || argv.update,
-    remove: argv.r || argv.remove,
-    set: argv.s || argv.set,
-    global: argv.g || argv.global
-  }
+  requireOptionSanity(argv)
 
-  requireOptionSanity(config)
-
-  return config
+  return argv
 }
 
 function requireOptionSanity (config) {

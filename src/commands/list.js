@@ -2,9 +2,11 @@
 
 module.exports = list
 
-var config = require('../config')
+const colorize = require('json-colorizer')
+const config = require('../config')
 
 function list () {
   console.log('Saved records:')
-  console.log(JSON.stringify(config.get(), null, 2))
+  const json = JSON.stringify(config.get(), null, 2)
+  console.log(colorize(json))
 }

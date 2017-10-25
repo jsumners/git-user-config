@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = remove
-let config = require('../config')
+const config = require('../config')
 
 function remove (options) {
   try {
@@ -9,7 +9,7 @@ function remove (options) {
     config.save()
       .then(confirm, handleError)
   } catch (e) {
-    console.error('\n' + e.message)
+    console.error(e.message)
   }
 }
 
@@ -18,5 +18,5 @@ function confirm () {
 }
 
 function handleError (error) {
-  console.error('\n' + error.message)
+  console.error(error.message)
 }
