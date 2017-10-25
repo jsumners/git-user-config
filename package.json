@@ -1,6 +1,6 @@
 {
   "name": "@jsumners/git-user-config",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Configure your git user for current repo",
   "main": "index.js",
   "scripts": {
